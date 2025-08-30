@@ -1,0 +1,334 @@
+/* Reset e variáveis de cores */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --azul: #0a3d62;
+  --laranja: #f39c12;
+  --branco: #ffffff;
+  --cinza: #f4f7fb;
+  --embraer: #00629B;
+  --boeing: #0033A0;
+  --airbus: #FF6600;
+  --mecanica: #4CAF50;
+  --eletrica: #FFC107;
+  --eletronica: #9C27B0;
+  --estrutura: #F44336;
+  --outras: #607D8B;
+}
+
+/* ======== ESTILOS GERAIS ======== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--cinza);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ======== CABEÇALHO ======== */
+header {
+  background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+  color: var(--branco);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.logo-icon {
+  font-size: 2rem;
+}
+
+.logo h1 {
+  font-size: 1.5rem;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* ======== MENU ======== */
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.nav-links li {
+  margin-left: 1.5rem;
+}
+
+.nav-links a {
+  color: var(--branco);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* HAMBURGUER */
+.burger {
+  display: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 20px;
+  margin-left: 1rem;
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--branco);
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* ======== CONTEÚDO ======== */
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1.5rem;
+}
+
+.section-title {
+  font-size: 28px;
+  color: var(--azul);
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: var(--laranja);
+  margin: 10px auto;
+  border-radius: 2px;
+}
+
+/* ======== FILTROS ======== */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.filter-btn {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.filter-btn.active {
+  color: white;
+}
+
+.filter-btn[data-filter="todos"].active { background-color: var(--azul); }
+.filter-btn[data-filter="embraer"].active { background-color: var(--embraer); }
+.filter-btn[data-filter="boeing"].active { background-color: var(--boeing); }
+.filter-btn[data-filter="airbus"].active { background-color: var(--airbus); }
+
+/* ======== GRIDS ======== */
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.card {
+  background: var(--branco);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.category-card .card-header {
+  padding: 1.5rem;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.card-icon {
+  font-size: 1.8rem;
+  margin-right: 1rem;
+}
+
+.mecanica { background-color: var(--mecanica); }
+.eletrica { background-color: var(--eletrica); color: #333; }
+.eletronica { background-color: var(--eletronica); }
+.estrutura { background-color: var(--estrutura); }
+.outras { background-color: var(--outras); }
+
+.card-body { padding: 1.5rem; }
+
+.norms-list {
+  list-style: none;
+}
+
+.norms-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manufacturer-tag {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  color: white;
+}
+
+.embraer-tag { background-color: var(--embraer); }
+.boeing-tag { background-color: var(--boeing); }
+.airbus-tag { background-color: var(--airbus); }
+
+.view-btn {
+  display: block;
+  text-align: center;
+  padding: 0.8rem;
+  background-color: #f5f7f9;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.view-btn:hover { background-color: #e0e5eb; }
+
+/* ======== ÁREA KIDS ======== */
+.kids-section {
+  background: var(--laranja);
+  color: var(--branco);
+  padding: 3rem 1.5rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+.kids-section .section-title { color: var(--branco); }
+.kids-section .section-title::after { background: var(--branco); }
+.kids-section .card { background: var(--branco); color: #333; }
+
+/* ======== RODAPÉ ======== */
+footer {
+  background: var(--azul);
+  color: var(--branco);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* ======== RESPONSIVIDADE ======== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .nav-links li { margin-left: 1rem; }
+  .logo h1 { font-size: 1.3rem; }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  header {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: var(--azul);
+    margin-top: 1rem;
+    border-radius: 8px;
+    padding: 1rem 0;
+  }
+
+  .nav-links li {
+    margin: 0.8rem 0;
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .logo h1 {
+    font-size: 1.2rem;
+  }
+
+  h1, h2, h3 {
+    word-break: break-word;
+  }
+
+  .content-grid, 
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filter-btn {
+    width: 100%;
+    max-width: 300px;
+    text-align: center;
+  }
+}
