@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto: Mini Aeronaves | Área Kids - Asas do Conhecimento</title>
+    <link rel="icon" href="images/logokids.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #f39c12;
+            --primary-dark: #e67e22;
+            --secondary: #00B2A9;
+            --accent: #FF5800;
+            --light: #fef9e7;
+            --dark: #333;
+            --gray: #6c757d;
+            --azul: #0a3d62;
+            --boeing: #0033A0;
+            --embraer: #00629B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #fef9e7 0%, #fdebd0 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('images/kids.png') no-repeat center center/cover;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(243, 156, 18, 0.8);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .project-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border-top: 5px solid var(--primary);
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            height: fit-content;
+            border-top: 5px solid var(--primary);
+        }
+
+        .module {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.7rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--primary-dark);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .info-box {
+            background-color: #fef9e7;
+            border-left: 4px solid var(--primary);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Materials Section */
+        .materials-section {
+            background: #fef9e7;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .materials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .material-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .material-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Sidebar Styles */
+        .sidebar h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .instructor {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructor img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 3px solid var(--primary);
+        }
+
+        .project-info {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-info li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .project-info li:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Step by Step */
+        .steps {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            margin-bottom: 1.5rem;
+            padding-left: 3rem;
+            position: relative;
+        }
+
+        .step:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2rem;
+            height: 2rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #555;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Quiz Styles */
+        .quiz {
+            background: #fef9e7;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .quiz ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz li {
+            margin-bottom: 1rem;
+        }
+
+        .quiz input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .materials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index1.html" class="logo">
+                <i class="fas fa-plane"></i>
+                <span>Asas do Conhecimento</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index1.html">Início</a></li>
+                <li><a href="index.html">Cursos</a></li>
+                <li><a href="area-kids.html">Área Kids</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Mini Aeronaves</h1>
+            <p>Construa pequenas aeronaves com materiais simples e aprenda sobre aerofólio, sustentação e controle de voo!</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="container breadcrumb">
+        <a href="index1.html">Início</a> > <a href="area-kids.html">Área Kids</a> > Mini Aeronaves
+    </div>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <div class="project-content">
+            <div class="module">
+                <h2>Introdução ao Projeto</h2>
+                <p>Vamos construir juntos mini aeronaves utilizando materiais simples e reciclados! Este projeto é uma maneira divertida de aprender sobre os princípios aerodinâmicos que permitem que aviões voem, incluindo aerofólio, sustentação e controle de voo.</p>
+                
+                <div class="info-box">
+                    <strong>✨ Objetivos de Aprendizado:</strong> Este projeto vai te ajudar a entender conceitos importantes como perfil aerodinâmico, forças de voo (sustentação, peso, tração e arrasto), e como as superfícies de controle funcionam.
+                </div>
+                
+                <h3>O que vamos aprender?</h3>
+                <p>Através desta atividade prática, você vai descobrir:</p>
+                <ul>
+                    <li>Como o formato das asas gera sustentação</li>
+                    <li>A importância do centro de gravidade no equilíbrio</li>
+                    <li>Como os ailerons, leme e profundor controlam a aeronave</li>
+                    <li>Como diferentes formatos de asa afetam o desempenho</li>
+                    <li>Noções básicas de aerodinâmica e física do voo</li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <h2>Videoaula: Princípios do Voo</h2>
+                <p>Assista a este vídeo educativo para entender os princípios básicos da aerodinâmica antes de começarmos nosso projeto!</p>
+                
+                <div class="video-container">
+                    <iframe id="youtubeVideo" src="https://www.youtube.com/embed/6B3y9GpSCdk?si=KeyIE-qe4-P0fBlo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-lightbulb"></i> <strong>Dica:</strong> Preste atenção na explicação sobre como o ar flui sobre as asas - é esse princípio que vamos testar nas nossas mini aeronaves!
+                </div>
+            </div>
+
+            <div class="module">
+                <h2>Materiais Necessários</h2>
+                <p>Vamos usar materiais simples e reciclados que você provavelmente tem em casa:</p>
+                
+                <div class="materials-section">
+                    <h3>Lista de Materiais</h3>
+                    
+                    <div class="materials-grid">
+                        <div class="material-card">
+                            <i class="fas fa-pallet"></i>
+                            <h4>Isopor ou Depron</h4>
+                            <p>Placas finas (3-5mm)</p>
+                        </div>
+                        <div class="material-card">
+                            <i class="fas fa-scissors"></i>
+                            <h4>Estilete</h4>
+                            <p>Com lâmina nova</p>
+                        </div>
+                        <div class="material-card">
+                            <i class="fas fa-pencil-alt"></i>
+                            <h4>Lápis</h4>
+                            <p>Para desenhar</p>
+                        </div>
+                        <div class="material-card">
+                            <i class="fas fa-ruler"></i>
+                            <h4>Régua</h4>
+                            <p>30cm metálica</p>
+                        </div>
+                        <div class="material-card">
+                            <i class="fas fa-sticky-note"></i>
+                            <h4>Cola quente</h4>
+                            <p>Pistola e bastões</p>
+                        </div>
+                        <div class="material-card">
+                            <i class="fas fa-paperclip"></i>
+                            <h4>Palitos</h4>
+                            <p>De churrasco ou dente</p>
+                        </div>
+                        <div class="material-card">
+                            <i class="fas fa-tape"></i>
+                            <h4>Fita adesiva</h4>
+                            <p>Para reforçar</p>
+                        </div>
+                        <div class="material-card">
+                            <i class="fas fa-paint-brush"></i>
+                            <h4>Tinta</h4>
+                            <p>Opcional para decorar</p>
+                        </div>
+                    </div>
+                    
+                    <p class="note">💡 Lembrete: Peça ajuda de um adulto para usar estiletes e a pistola de cola quente!</p>
+                </div>
+            </div>
+
+            <div class="module">
+                <h2>Passo a Passo</h2>
+                <p>Siga estas instruções para construir sua mini aeronave:</p>
+                
+                <div class="steps">
+                    <div class="step">
+                        <h3>Escolha do Design</h3>
+                        <p>Selecione um modelo simples para começar (asa alta, asa baixa ou delta). Use nossos moldes disponíveis para download.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Desenhando as Partes</h3>
+                        <p>Transfira o contorno das peças (asa, fuselagem, estabilizadores) para o isopor usando um lápis e régua.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Cortando as Peças</h3>
+                        <p>Com cuidado e com ajuda de um adulto, corte todas as peças seguindo os contornos. Use uma régua metálica para cortes retos.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Preparando o Aerofólio</h3>
+                        <p>Para melhor desempenho, dê um formato curvado à asa. Você pode usar calor suave ou lixar levemente a superfície.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Montagem da Estrutura</h3>
+                        <p>Cole as partes usando cola quente. Comece pela fuselagem, depois fixe a asa e por último os estabilizadores vertical e horizontal.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Balanceamento</h3>
+                        <p>Encontre o centro de gravidade e ajuste com pequenos pesos se necessário. O ponto de equilíbrio deve estar a cerca de 1/3 da asa.</p>
+                    </div>
+                    
+                    <div class="step">
+                        <h3>Testes de Voo</h3>
+                        <p>Faça lançamentos suaves em um espaço aberto e observe o comportamento da aeronave. Ajuste as superfícies conforme necessário.</p>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-exclamation-triangle"></i> <strong>Importante:</strong> Teste sempre em áreas abertas, longe de pessoas, animais e obstáculos. Use óculos de proteção durante os testes.
+                </div>
+                
+                <div class="quiz">
+                    <h3>Quiz: O que aprendemos?</h3>
+                    <ol>
+                        <li>
+                            <p>O que é um aerofólio e qual sua função?</p>
+                            <input type="radio" name="q1" id="q1a"> <label for="q1a">É o formato da asa que cria diferença de pressão para gerar sustentação</label><br>
+                            <input type="radio" name="q1" id="q1b"> <label for="q1b">É o motor que impulsiona o avião</label><br>
+                            <input type="radio" name="q1" id="q1c"> <label for="q1c">É a parte traseira que estabiliza o voo</label>
+                        </li>
+                        <li>
+                            <p>Por que o centro de gravidade é importante em uma aeronave?</p>
+                            <input type="radio" name="q2" id="q2a"> <label for="q2a">Para determinar onde colocar os adesivos decorativos</label><br>
+                            <input type="radio" name="q2" id="q2b"> <label for="q2b">Para garantir o equilíbrio e estabilidade durante o voo</label><br>
+                            <input type="radio" name="q2" id="q2c"> <label for="q2c">Para saber quanta tinta será necessária</label>
+                        </li>
+                    </ol>
+                    
+                    <button class="btn">Enviar Respostas</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <h3>Sobre o Projeto</h3>
+            
+            <div class="instructor">
+                <img src="images/logokids.png" alt="Instrutor">
+                <div>
+                    <h4>Prof.</h4>
+                    <p>Especialista em Projetos Educativos</p>
+                </div>
+            </div>
+            
+            <ul class="project-info">
+                <li><i class="far fa-clock"></i> Duração <span>2-3 horas</span></li>
+                <li><i class="fas fa-tools"></i> Dificuldade <span>Média</span></li>
+                <li><i class="fas fa-users"></i> Ideal para <span>10-15 anos</span></li>
+                <li><i class="fas fa-recycle"></i> Materiais <span>Reciclados</span></li>
+            </ul>
+            
+            <h4>Baixar Moldes</h4>
+            <a href="#" class="btn btn-block"><i class="fas fa-download"></i> Moldes de Aeronaves</a>
+            
+            <h3 style="margin-top: 2rem;">Dicas de Segurança</h3>
+            <ul>
+                <li>✂️ Use estilete com supervisão adulta</li>
+                <li>👓 Proteja os olhos durante testes</li>
+                <li>🌳 Teste em área aberta sem obstáculos</li>
+                <li>🔥 Cuidado com a cola quente</li>
+            </ul>
+
+            <h3 style="margin-top: 2rem;">Próximos Projetos</h3>
+            <ul>
+                <li>Avião de Papelão</li>
+                <li>Foguete de Garrafa PET</li>
+                <li>Planador de Isopor</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Asas do Conhecimento</h3>
+                <p>Plataforma de ensino especializada em engenharia aeronáutica e normas das principais fabricantes do setor.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <a href="index1.html">Início</a>
+                <a href="index.html">Cursos</a>
+                <a href="area-kids.html">Área Kids</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>Email: contato@asasdoconhecimento.com</p>
+                <p>Telefone: (11) 3456-7890</p>
+            </div>
+        </div>
+        
+        <div class="container copyright">
+            <p>&copy; 2025 Asas do Conhecimento. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simulação de dados
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simular carregamento
+            setTimeout(() => {
+                console.log('Projeto Mini Aeronaves carregado');
+            }, 1500);
+            
+            // Configurar player de vídeo
+            const video = document.getElementById('youtubeVideo');
+            video.addEventListener('load', () => {
+                console.log('Vídeo educativo carregado');
+            });
+
+            // Quiz simples
+            document.querySelector('.quiz .btn').addEventListener('click', function() {
+                alert('Respostas enviadas! 🚀\nVerifique com seu professor se acertou!');
+            });
+        });
+    </script>
+</body>
+</html>

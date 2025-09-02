@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asas do Conhecimento - Notícias de Aeronáutica</title>
+  <link rel="icon" href="images/logoo.png" type="image/png">
+  <style>
+    /* Reset e variáveis de cores */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --azul: #0a3d62;
+      --laranja: #f39c12;
+      --branco: #ffffff;
+      --cinza: #f4f7fb;
+      --cinza-escuro: #e0e0e0;
+      --embraer: #00629B;
+      --boeing: #0033A0;
+      --airbus: #FF6600;
+      --mecanica: #4CAF50;
+      --eletrica: #FFC107;
+      --eletronica: #9C27B0;
+      --estrutura: #F44336;
+      --outras: #607D8B;
+      --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transicao: all 0.3s ease;
+      --dark: #333;
+      --accent: #FF5800;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--cinza);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Cabeçalho */
+    header {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+      color: var(--branco);
+      padding: 1rem 1.5rem;
+      box-shadow: var(--sombra);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-icon {
+      font-size: 2rem;
+      margin-right: 0.8rem;
+    }
+    
+    .logo h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+    }
+    
+    .subtitle {
+      display: none;
+    }
+    
+
+    /* ======== MENU ======== */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--branco);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: var(--transicao);
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* HAMBURGUER - OCULTO NO DESKTOP */
+    .burger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+    }
+
+    .burger div {
+      width: 100%;
+      height: 3px;
+      background-color: var(--branco);
+      border-radius: 3px;
+      transition: var(--transicao);
+    }
+
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(10, 61, 98, 0.8), rgba(10, 61, 98, 0.8)), url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80');
+      background-size: cover;
+      background-position: center;
+      color: var(--branco);
+      text-align: center;
+      padding: 5rem 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    
+    /* Filtros de Notícias */
+    .news-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+    
+    .news-filter-btn {
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 50px;
+      background-color: white;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: var(--sombra);
+      transition: var(--transicao);
+    }
+    
+    .news-filter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .news-filter-btn.active {
+      color: white;
+    }
+    
+    .news-filter-btn[data-filter="todos"].active {
+      background-color: var(--azul);
+    }
+    
+    .news-filter-btn[data-filter="boeing"].active {
+      background-color: var(--boeing);
+    }
+    
+    .news-filter-btn[data-filter="embraer"].active {
+      background-color: var(--embraer);
+    }
+    
+    .news-filter-btn[data-filter="airbus"].active {
+      background-color: var(--airbus);
+    }
+    
+    /* Container de Notícias */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      color: var(--azul);
+      margin-bottom: 1.5rem;
+      position: relative;
+      text-align: center;
+      padding-bottom: 0.5rem;
+    }
+    
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--laranja);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+    
+    /* Grid de Notícias */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .news-card {
+      background: var(--branco);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: var(--transicao);
+    }
+    
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    
+    .news-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .news-content {
+      padding: 1.5rem;
+    }
+    
+    .news-tag {
+      display: inline-block;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: white;
+    }
+    
+    .tag-boeing {
+      background-color: var(--boeing);
+    }
+    
+    .tag-embraer {
+      background-color: var(--embraer);
+    }
+    
+    .tag-airbus {
+      background-color: var(--airbus);
+    }
+    
+    .news-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--azul);
+    }
+    
+    .news-date {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 1rem;
+    }
+    
+    .news-excerpt {
+      margin-bottom: 1.5rem;
+    }
+    
+    .news-link {
+      display: inline-block;
+      color: var(--laranja);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transicao);
+    }
+    
+    .news-link:hover {
+      color: var(--azul);
+    }
+    
+    /* Loading e Estados Vazios */
+    .loading, .no-news {
+      text-align: center;
+      padding: 2rem;
+      font-size: 1.1rem;
+      color: #777;
+    }
+    
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left-color: var(--laranja);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+     footer {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--branco);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #555;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .api-data {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+    
+    /* Responsividade */
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        right: 0;
+        height: 100vh;
+        top: 0;
+        background-color: var(--azul);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        z-index: 999;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      .nav-links li {
+        margin-left: 0;
+        opacity: 0;
+      }
+      
+      .burger {
+        display: flex;
+        z-index: 1000;
+      }
+      
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
+      }
+      
+      .news-filters {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .news-filter-btn {
+        width: 200px;
+      }
+      
+      .nav-active {
+        transform: translateX(0%);
+      }
+      
+      @keyframes navLinkFade {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+      
+      .toggle .line2 {
+        opacity: 0;
+      }
+      
+      .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">✈</div>
+      <div>
+        <h1>Asas do Conhecimento</h1>
+        <p class="subtitle">Plataforma Educacional de Normas Aeronáuticas</p>
+      </div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index1.html">Início</a></li>
+        <li><a href="index.html">Cursos</a></li>
+        <li><a href="area-kids.html">Área Kids</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <h2>Últimas Notícias do Mundo da Aeronáutica</h2>
+    <p>Fique por dentro das novidades, inovações e acontecimentos mais recentes da Boeing, Embraer, Airbus e do setor aeroespacial mundial.</p>
+  </section>
+  
+  <!-- Seção de Notícias -->
+  <section id="noticias" class="container">
+    <h2 class="section-title">Notícias em Destaque</h2>
+    
+    <div class="news-filters">
+      <button class="news-filter-btn active" data-filter="todos">Todas</button>
+      <button class="news-filter-btn" data-filter="boeing">Boeing</button>
+      <button class="news-filter-btn" data-filter="embraer">Embraer</button>
+      <button class="news-filter-btn" data-filter="airbus">Airbus</button>
+    </div>
+    
+    <div class="news-grid" id="news-container">
+      <div class="loading">
+        <div class="spinner"></div>
+        <p>Carregando notícias...</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Asas do Conhecimento</h3>
+                <p>Plataforma de ensino especializada em engenharia aeronáutica e normas das principais fabricantes do setor.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <a href="index1.html">Início</a>
+                <a href="index.html">Cursos</a>
+                <a href="area-kids.html">Área Kids</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fas fa-envelope"></i> contato@asasdoconhecimento.com</p>
+                <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container copyright">
+            <p>&copy; 2025 Asas do Conhecimento. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+  <script>
+    // Dados simulados de notícias (substituir por API real)
+    const newsData = [
+      {
+        id: 1,
+        title: "Boeing anuncia novo modelo de aeronave para voos regionais",
+        excerpt: "A Boeing revelou seu mais recente projeto de aeronave regional, prometendo maior eficiência no consumo de combustível.",
+        image: "images/boeing.jpg",
+        date: "15 Mar 2025",
+        category: "boeing",
+        url: "#"
+      },
+      {
+        id: 2,
+        title: "Embraer fecha contrato recorde com companhia aérea europeia",
+        excerpt: "A Embraer assinou contrato de fornecimento de 50 jatos E2 com uma das maiores companhias aéreas da Europa.",
+        image: "images/embraer.png",
+        date: "14 Mar 2025",
+        category: "embraer",
+        url: "#"
+      },
+      {
+        id: 3,
+        title: "Airbus anuncia avanços em tecnologia de combustível sustentável",
+        excerpt: "A Airbus revelou novos desenvolvimentos em sua pesquisa por combustíveis de aviação sustentáveis.",
+        image: "images/airbus.png",
+        date: "13 Mar 2025",
+        category: "airbus",
+        url: "#"
+      },
+      {
+        id: 4,
+        title: "Boeing recebe certificação para novo sistema de navegação",
+        excerpt: "Órgão regulador aprova sistema de navegação de última geração da Boeing para implementação em frota global.",
+        image: "images/boeing.jpg",
+        date: "12 Mar 2025",
+        category: "boeing",
+        url: "#"
+      },
+      {
+        id: 5,
+        title: "Embraer anuncia expansão de fábrica no Brasil",
+        excerpt: "Empresa investirá R$ 500 milhões na ampliação de sua unidade produtiva em São José dos Campos.",
+        image: "images/embraer.png",
+        date: "11 Mar 2025",
+        category: "embraer",
+        url: "#"
+      },
+      {
+        id: 6,
+        title: "Airbus apresenta conceito de cabine para aviação do futuro",
+        excerpt: "Novo design de cabine prioriza conforto do passageiro e eficiência operacional para voos de longa distância.",
+        image: "images/airbus.png",
+        date: "10 Mar 2025",
+        category: "airbus",
+        url: "#"
+      }
+    ];
+
+    // Menu mobile (hamburguer)
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    if (burger && nav && navLinks.length > 0) {
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+        
+        burger.classList.toggle('toggle');
+      });
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-active');
+          burger.classList.remove('toggle');
+          navLinks.forEach(link => {
+            link.style.animation = '';
+          });
+        });
+      });
+    }
+
+    // Filtros de notícias
+    const filterButtons = document.querySelectorAll('.news-filter-btn');
+    const newsContainer = document.getElementById('news-container');
+    
+    // Carregar notícias
+    function loadNews(filter = 'todos') {
+      newsContainer.innerHTML = '<div class="loading"><div class="spinner"></div><p>Carregando notícias...</p></div>';
+      
+      // Simular carregamento com API
+      setTimeout(() => {
+        let filteredNews = newsData;
+        
+        if (filter !== 'todos') {
+          filteredNews = newsData.filter(news => news.category === filter);
+        }
+        
+        displayNews(filteredNews);
+      }, 800);
+    }
+    
+    // Exibir notícias
+    function displayNews(news) {
+      if (news.length === 0) {
+        newsContainer.innerHTML = '<div class="no-news">Nenhuma notícia encontrada para este filtro.</div>';
+        return;
+      }
+      
+      newsContainer.innerHTML = '';
+      
+      news.forEach(item => {
+        const newsCard = document.createElement('div');
+        newsCard.classList.add('news-card');
+        newsCard.innerHTML = `
+          <img src="${item.image}" alt="${item.title}" class="news-image">
+          <div class="news-content">
+            <span class="news-tag tag-${item.category}">${item.category.toUpperCase()}</span>
+            <h3 class="news-title">${item.title}</h3>
+            <p class="news-date">${item.date}</p>
+            <p class="news-excerpt">${item.excerpt}</p>
+            <a href="${item.url}" class="news-link">Leia mais</a>
+          </div>
+        `;
+        newsContainer.appendChild(newsCard);
+      });
+    }
+    
+    // Event listeners para filtros
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        const filter = button.getAttribute('data-filter');
+        loadNews(filter);
+      });
+    });
+    
+    // Ano atual no footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Inicializar carregamento de notícias
+    loadNews();
+  </script>
+</body>
+</html>

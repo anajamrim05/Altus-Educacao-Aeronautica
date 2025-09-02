@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - Asas do Conhecimento</title>
+  <link rel="icon" href="images/logoo.png" type="image/png">
+  <style>
+    /* Reset e variáveis de cores */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --azul: #0a3d62;
+      --laranja: #f39c12;
+      --branco: #ffffff;
+      --cinza: #f4f7fb;
+      --embraer: #00629B;
+      --boeing: #0033A0;
+      --airbus: #FF6600;
+      --mecanica: #4CAF50;
+      --eletrica: #FFC107;
+      --eletronica: #9C27B0;
+      --estrutura: #F44336;
+      --outras: #607D8B;
+      --dark: #2c3e50;
+      --accent: #FF5800;
+      --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transicao: all 0.3s ease;
+      --dark1:#2c3e50;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--cinza);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ======== CABEÇALHO ======== */
+    header {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+      color: var(--branco);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--sombra);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      margin-right: 0.8rem;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    /* ======== MENU ======== */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--branco);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: var(--transicao);
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* HAMBURGUER - OCULTO NO DESKTOP */
+    .burger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+    }
+
+    .burger div {
+      width: 100%;
+      height: 3px;
+      background-color: var(--branco);
+      border-radius: 3px;
+      transition: var(--transicao);
+    }
+
+    /* ======== CONTEÚDO ======== */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: var(--azul);
+      margin-bottom: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--laranja);
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    /* ======== CONTATO ======== */
+    .contact-content {
+      background: var(--branco);
+      border-radius: 10px;
+      padding: 2.5rem;
+      box-shadow: var(--sombra);
+      margin-bottom: 2rem;
+    }
+
+    .contact-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .contact-info, .contact-form {
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--laranja);
+    }
+
+    .contact-info h3, .contact-form h3 {
+      color: var(--azul);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-info h3 i, .contact-form h3 i {
+      margin-right: 10px;
+      color: var(--laranja);
+    }
+
+    .contact-details {
+      list-style: none;
+    }
+
+    .contact-details li {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+    }
+
+    .contact-details li:last-child {
+      border-bottom: none;
+    }
+
+    .contact-details i {
+      margin-right: 1rem;
+      color: var(--azul);
+      font-size: 1.2rem;
+      width: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--laranja);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn:hover {
+      background: #e67e22;
+      transform: translateY(-2px);
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: var(--azul);
+      color: white;
+      border-radius: 50%;
+      transition: var(--transicao);
+    }
+
+    .social-links a:hover {
+      background: var(--laranja);
+      transform: translateY(-3px);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      background: var(--branco);
+      border-radius: 10px;
+      padding: 2.5rem;
+      box-shadow: var(--sombra);
+      margin-bottom: 2rem;
+    }
+
+    .faq-item {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1rem;
+    }
+
+    .faq-question {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-answer {
+      color: var(--dark);
+      display: none;
+    }
+
+    .faq-answer.active {
+      display: block;
+    }
+
+    /* ======== RODAPÉ ======== */
+    footer {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .footer-section h3 {
+      color: var(--branco);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #555;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-section p, .footer-section a {
+      color: #ccc;
+      margin-bottom: 0.5rem;
+      display: block;
+      text-decoration: none;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #555;
+      color: #aaa;
+      font-size: 0.9rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 0;
+    }
+
+    /* ======== RESPONSIVIDADE ======== */
+    @media (max-width: 768px) {
+      /* Menu Hamburguer para mobile */
+      .burger {
+        display: flex;
+        z-index: 1000;
+      }
+      
+      .nav-links {
+        position: fixed;
+        right: 0;
+        height: 100vh;
+        top: 0;
+        background-color: var(--azul);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        z-index: 999;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      .nav-links li {
+        margin: 1.5rem 0;
+        opacity: 0;
+      }
+      
+      .nav-active {
+        transform: translateX(0%);
+      }
+      
+      /* Animações */
+      @keyframes navLinkFade {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+      
+      .toggle .line2 {
+        opacity: 0;
+      }
+      
+      .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      /* Ajustes de layout para mobile */
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-content, .faq-section {
+        padding: 1.5rem;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Cabeçalho com Hambúrguer -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">✈</div>
+      <div>
+        <h1>Asas do Conhecimento</h1>
+      </div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index1.html">Início</a></li>
+        <li><a href="index.html">Cursos</a></li>
+        <li><a href="area-kids.html">Área Kids</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Contato -->
+  <div class="container">
+    <h2 class="section-title">Entre em Contato</h2>
+    
+    <div class="contact-content">
+      <p>Estamos à disposição para esclarecer dúvidas, receber sugestões e fornecer informações sobre nossos cursos e projetos. Entre em contato conosco através dos canais abaixo ou preencha o formulário.</p>
+      
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3><i class="fas fa-info-circle"></i> Informações de Contato</h3>
+          
+          <ul class="contact-details">
+            <li>
+              <i class="fas fa-map-marker-alt"></i>
+              <div>
+                <strong>Endereço</strong><br>
+                Av. das Aeronaves, 1234 - Jardim das Asas<br>
+                São José dos Campos - SP, 12228-901
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-phone"></i>
+              <div>
+                <strong>Telefone</strong><br>
+                (12) 3456-7890
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-envelope"></i>
+              <div>
+                <strong>E-mail</strong><br>
+                contato@asasdoconhecimento.com
+              </div>
+            </li>
+            <li>
+              <i class="fas fa-clock"></i>
+              <div>
+                <strong>Horário de Atendimento</strong><br>
+                Segunda a Sexta: 8h às 18h<br>
+                Sábado: 9h às 13h
+              </div>
+            </li>
+          </ul>
+          
+          <h3 style="margin-top: 1.5rem;"><i class="fas fa-share-alt"></i> Redes Sociais</h3>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="contact-form">
+          <h3><i class="fas fa-envelope"></i> Envie uma Mensagem</h3>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Nome Completo</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="phone">Telefone</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+              <label for="subject">Assunto</label>
+              <select id="subject" name="subject" required>
+                <option value="">Selecione um assunto</option>
+                <option value="curso">Informações sobre Cursos</option>
+                <option value="kids">Área Kids</option>
+                <option value="empresa">Parcerias Empresariais</option>
+                <option value="suporte">Suporte Técnico</option>
+                <option value="outro">Outro</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Mensagem</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-block">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <div class="faq-section">
+      <h2 class="section-title">Perguntas Frequentes</h2>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Como posso me inscrever em um curso?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Você pode se inscrever diretamente pela página do curso desejado. Basta clicar no botão "Inscrever-se" e seguir as instruções para preencher o formulário de inscrição e realizar o pagamento.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Os cursos são reconhecidos pelo mercado?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Sim, todos os nossos cursos são desenvolvidos em conformidade com as normas aeronáuticas internacionais e são reconhecidos pelas principais empresas do setor.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Há algum pré-requisito para os cursos?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Depende do curso. Alguns cursos exigem conhecimentos prévios em engenharia ou experiência na área aeronáutica. As informações específicas estão detalhadas na página de cada curso.
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">
+          Vocês oferecem cursos in company para empresas?
+          <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="faq-answer">
+          Sim, oferecemos treinamentos personalizados para empresas. Entre em contato conosco para discutir suas necessidades específicas.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Asas do Conhecimento</h3>
+        <p>Plataforma de ensino especializada em engenharia aeronáutica e normas das principais fabricantes do setor.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Links Rápidos</h3>
+        <a href="index1.html">Início</a>
+        <a href="index.html">Cursos</a>
+        <a href="area-kids.html">Área Kids</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <p>Email: contato@asasdoconhecimento.com</p>
+        <p>Telefone: (12) 3456-7890</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Asas do Conhecimento. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Menu mobile (hamburguer)
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    // Adicionar event listener para o botão hamburguer
+    if (burger && nav) {
+      burger.addEventListener('click', () => {
+        // Alternar a visibilidade do menu
+        nav.classList.toggle('nav-active');
+        
+        // Animar os links
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+        
+        // Animação do botão hamburguer
+        burger.classList.toggle('toggle');
+      });
+      
+      // Fechar menu ao clicar em um link
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (nav.classList.contains('nav-active')) {
+            nav.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+            navLinks.forEach(link => {
+              link.style.animation = '';
+            });
+          }
+        });
+      });
+    }
+    
+    // FAQ toggle
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        answer.classList.toggle('active');
+        
+        const icon = question.querySelector('i');
+        if (answer.classList.contains('active')) {
+          icon.classList.remove('fa-chevron-down');
+          icon.classList.add('fa-chevron-up');
+        } else {
+          icon.classList.remove('fa-chevron-up');
+          icon.classList.add('fa-chevron-down');
+        }
+      });
+    });
+    
+    // Form submission
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
+        contactForm.reset();
+      });
+    }
+    
+    // Adicionar ano atual no footer
+    const footerParagraph = document.querySelector('.copyright p');
+    if (footerParagraph) {
+      footerParagraph.innerHTML = `© ${new Date().getFullYear()} Asas do Conhecimento. Todos os direitos reservados.`;
+    }
+  </script>
+</body>
+</html>

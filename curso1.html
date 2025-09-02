@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso: Trem de Pouso (ATA 32) | AeroCourses</title>
+    <link rel="icon" href="images/logoo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #005288;
+            --secondary: #00B2A9;
+            --accent: #FF5800;
+            --light: #f4f4f4;
+            --dark: #333;
+            --gray: #6c757d;
+            --azul: #0a3d62;
+            --boeing: #0033A0;
+            --embraer: #00629B;
+            --branco: #ffffff;
+            --transicao: all 0.3s ease;
+
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--light);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* HAMBURGUER - OCULTO NO DESKTOP */
+        .burger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            }
+
+        .burger div {
+            width: 100%;
+            height: 3px;
+            background-color: var(--branco);
+            border-radius: 3px;
+            transition: var(--transicao);
+            }    
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .course-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            height: fit-content;
+        }
+
+        .module {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.7rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .info-box {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--primary);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* API Data Section */
+        .api-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .api-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .data-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .data-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Sidebar Styles */
+        .sidebar h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .instructor {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructor img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 3px solid var(--secondary);
+        }
+
+        .course-info {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-info li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .course-info li:last-child {
+            border-bottom: none;
+        }
+
+        .progress-container {
+            background: #e9ecef;
+            border-radius: 5px;
+            height: 8px;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            background: var(--secondary);
+            height: 100%;
+            width: 75%;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            background: #e14a00;
+            transform: translateY(-2px);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--branco);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #555;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .api-data {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+        @media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  .footer-section h3 {
+    text-align: center;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-plane"></i>
+                <span>Asas do Conhecimento</span>
+            </div>
+            <nav>
+            <ul class="nav-links">
+                <li><a href="index1.html">Início</a></li>
+                <li><a href="index.html">Cursos</a></li>
+                <li><a href="area-kids.html">Área Kids</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Trem de Pouso (ATA 32)</h1>
+            <p>Conheça os conceitos fundamentais, procedimentos de manutenção e a importância deste sistema crítico para a segurança de voo.</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="container breadcrumb">
+        <a href="index.html">Início</a> > <a href="cursos.html">Cursos</a> > Trem de Pouso (ATA 32)
+    </div>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <div class="course-content">
+            <div class="module">
+                <h2>Introdução ao Sistema</h2>
+                <p>O trem de pouso, categorizado pelo padrão ATA iSpec 2200 no <strong>capítulo 32</strong>, é um dos sistemas mais críticos de uma aeronave. Ele é responsável por suportar a aeronave em solo, amortecer o impacto durante o pouso e permitir manobras durante o taxiamento.</p>
+                
+                <div class="info-box">
+                    <strong>Padrão ATA 32:</strong> Este capítulo padroniza toda a documentação relacionada ao trem de pouso, incluindo manuais de manutenção, diagramas de partes e procedimentos de inspeção para todos os fabricantes (Boeing, Airbus, Embraer).
+                </div>
+                
+                <h3>Componentes Principais</h3>
+                <p>O sistema de trem de pouso é composto por diversos subsistemas, incluindo:</p>
+                <ul>
+                    <li>Estrutura principal e montantes</li>
+                    <li>Sistema de amortecimento</li>
+                    <li>Sistema de retração e extensão</li>
+                    <li>Travas e mecanismos de segurança</li>
+                    <li>Sistema de direção do trem de nariz</li>
+                    <li>Freios e sistema antibloqueio</li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <h2>Videoaula: Funcionamento e Componentes</h2>
+                <p>Assista a esta animação para entender os componentes principais e a sequência de operação de um trem de pouso típico de uma aeronave comercial.</p>
+                
+                <div class="video-container">
+                    <iframe id="youtubeVideo" src="https://www.youtube.com/embed/AET30_hZoBc?si=LubLeAiOds2xLlh6" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i> Esta videoaula ilustra os princípios de funcionamento comuns à maioria das aeronaves comerciais, incluindo modelos da Boeing, Airbus e Embraer.
+                </div>
+            </div>
+
+            <div class="module">
+                <h2>Dados do Setor e Normativas</h2>
+                <p>O setor aeronáutico é altamente regulado para garantir os mais altos padrões de segurança. As principais normativas para o sistema de trem de pouso incluem:</p>
+                
+                <h3>Regulamentos Internacionais</h3>
+                <p>As agências reguladoras como FAA (EUA), EASA (Europa) e ANAC (Brasil) estabelecem requisitos rigorosos para projeto, manutenção e inspeção do sistema de trem de pouso.</p>
+                
+                <div class="api-section">
+                    <h3>Dados de Frota em Tempo Real</h3>
+                    <p>Utilizamos APIs de aviação para mostrar informações atualizadas sobre aeronaves que utilizam sistemas de trem de pouso convencional:</p>
+                    
+                    <div class="api-data">
+                        <div class="data-card">
+                            <i class="fas fa-plane"></i>
+                            <h4>Boeing 737</h4>
+                            <p>8.240 unidades</p>
+                        </div>
+                        <div class="data-card">
+                            <i class="fas fa-plane"></i>
+                            <h4>Airbus A320</h4>
+                            <p>7.874 unidades</p>
+                        </div>
+                        <div class="data-card">
+                            <i class="fas fa-plane"></i>
+                            <h4>Embraer E-Jets</h4>
+                            <p>1.600 unidades</p>
+                        </div>
+                    </div>
+                    
+                    <p class="note">Dados simulados para fins educacionais. Em uma implementação real, estes dados viriam de APIs de aviação.</p>
+                </div>
+            </div>
+
+            <div class="module">
+                <h2>Atividade Prática</h2>
+                <p>Teste seu conhecimento sobre os conceitos apresentados neste módulo:</p>
+                
+                <div class="quiz">
+                    <h3>Questionário: Trem de Pouso (ATA 32)</h3>
+                    <ol>
+                        <li>
+                            <p>Qual é a função principal do sistema de trem de pouso em uma aeronave?</p>
+                            <input type="radio" name="q1" id="q1a"> <label for="q1a">Fornecer sustentação durante o voo</label><br>
+                            <input type="radio" name="q1" id="q1b"> <label for="q1b">Suportar a aeronave em solo e amortecer o pouso</label><br>
+                            <input type="radio" name="q1" id="q1c"> <label for="q1c">Controlar a direção durante o voo</label>
+                        </li>
+                        <li>
+                            <p>Que capítulo do padrão ATA iSpec 2200 padroniza a documentação do trem de pouso?</p>
+                            <input type="radio" name="q2" id="q2a"> <label for="q2a">ATA 27 - Controles de voo</label><br>
+                            <input type="radio" name="q2" id="q2b"> <label for="q2b">ATA 32 - Trem de pouso</label><br>
+                            <input type="radio" name="q2" id="q2c"> <label for="q2c">ATA 29 - Sistema hidráulico</label>
+                        </li>
+                    </ol>
+                    
+                    <button class="btn">Enviar Respostas</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <h3>Sobre o Curso</h3>
+            
+            <div class="instructor">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Instrutor">
+                <div>
+                    <h4>Eng. </h4>
+                    <p>Especialista em Sistemas Aeronáuticos</p>
+                </div>
+            </div>
+            
+            <ul class="course-info">
+                <li><i class="far fa-clock"></i> Duração <span>4 semanas</span></li>
+                <li><i class="far fa-file-alt"></i> Módulos <span>5</span></li>
+                <li><i class="far fa-play-circle"></i> Videoaulas <span>12</span></li>
+                <li><i class="far fa-star"></i> Nível <span>Intermediário</span></li>
+            </ul>
+            
+            <h4>Progresso do Curso</h4>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p>25% concluído</p>
+            
+            <a href="#" class="btn btn-block">Continuar Curso</a>
+            <a href="#" class="btn btn-block" style="background: var(--gray);">Material de Apoio</a>
+            
+            <h3 style="margin-top: 2rem;">Próximos Módulos</h3>
+            <ul>
+                <li>Sistemas Hidráulicos (ATA 29)</li>
+                <li>Sistemas de Frenagem</li>
+                <li>Procedimentos de Manutenção</li>
+                <li>Estudos de Caso</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Asas do Conhecimento</h3>
+                <p>Plataforma de ensino especializada em engenharia aeronáutica e normas das principais fabricantes do setor.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <a href="index1.html">Início</a>
+                <a href="index.html">Cursos</a>
+                <a href="area-kids.html">Área Kids</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fas fa-envelope"></i> contato@asasdoconhecimento.com</p>
+                <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container copyright">
+            <p>&copy; 2025 Asas do Conhecimento. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile (hamburguer)
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    // Adicionar event listener para o botão hamburguer
+    if (burger && nav) {
+      burger.addEventListener('click', () => {
+        // Alternar a visibilidade do menu
+        nav.classList.toggle('nav-active');
+        
+        // Animar os links
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+        
+        // Animação do botão hamburguer
+        burger.classList.toggle('toggle');
+      });
+      
+      // Fechar menu ao clicar em um link
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (nav.classList.contains('nav-active')) {
+            nav.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+            navLinks.forEach(link => {
+              link.style.animation = '';
+            });
+          }
+        });
+      });
+    }
+        // Simulação de dados de API
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simular carregamento de dados de API
+            setTimeout(() => {
+                // Em uma implementação real, aqui viriam os dados da API
+                console.log('Dados carregados da API de aviação');
+            }, 1500);
+            
+            // Simular player de vídeo
+            const video = document.getElementById('youtubeVideo');
+            video.addEventListener('load', () => {
+                console.log('Vídeo do YouTube carregado');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso: Sistema de Controle de Voo (ATA 27) | Asas do Conhecimento</title>
+    <link rel="icon" href="images/logoo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #005288;
+            --secondary: #00B2A9;
+            --accent: #FF5800;
+            --light: #f4f4f4;
+            --dark: #333;
+            --gray: #6c757d;
+            --azul: #0a3d62;
+            --boeing: #0033A0;
+            --embraer: #00629B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--light);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-bottom: 2rem;
+            border-radius: 0 0 10px 10px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .course-content {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            height: fit-content;
+        }
+
+        .module {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.7rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .info-box {
+            background-color: #e8f4fc;
+            border-left: 4px solid var(--primary);
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* API Data Section */
+        .api-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .api-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .data-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .data-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Sidebar Styles */
+        .sidebar h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--secondary);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .instructor {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructor img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 3px solid var(--secondary);
+        }
+
+        .course-info {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-info li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .course-info li:last-child {
+            border-bottom: none;
+        }
+
+        .progress-container {
+            background: #e9ecef;
+            border-radius: 5px;
+            height: 8px;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            background: var(--secondary);
+            height: 100%;
+            width: 75%;
+            border-radius: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .btn:hover {
+            background: #e14a00;
+            transform: translateY(-2px);
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--branco);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #555;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Quiz Styles */
+        .quiz {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .quiz ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz li {
+            margin-bottom: 1rem;
+        }
+
+        .quiz input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-links {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .api-data {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                <i class="fas fa-plane"></i>
+                <span>Asas do Conhecimento</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index1.html">Início</a></li>
+                <li><a href="index.html">Cursos</a></li>
+                <li><a href="area-kids.html">Área Kids</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="contato.html">Contato</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Sistema de Controle de Voo (ATA 27)</h1>
+            <p>Domine os princípios, componentes e procedimentos de manutenção dos sistemas de controle de voo em aeronaves comerciais.</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <div class="container breadcrumb">
+        <a href="index1.html">Início</a> > <a href="index.html">Cursos</a> > Sistema de Controle de Voo (ATA 27)
+    </div>
+
+    <!-- Main Content -->
+    <div class="container main-content">
+        <div class="course-content">
+            <div class="module">
+                <h2>Introdução aos Sistemas de Controle de Voo</h2>
+                <p>Os sistemas de controle de voo, categorizados pelo padrão ATA iSpec 2200 no <strong>capítulo 27</strong>, são responsáveis pelo controle e estabilização da aeronave durante todas as fases do voo, garantindo segurança, estabilidade e manobrabilidade.</p>
+                
+                <div class="info-box">
+                    <strong>Padrão ATA 27:</strong> Este capítulo padroniza toda a documentação relacionada aos sistemas de controle de voo, incluindo manuais de manutenção, diagramas esquemáticos e procedimentos de teste para todos os fabricantes (Boeing, Airbus, Embraer).
+                </div>
+                
+                <h3>Componentes Principais</h3>
+                <p>O sistema de controle de voo é composto por diversos subsistemas interconectados:</p>
+                <ul>
+                    <li>Superfícies de controle primárias (alerons, profundor, leme)</li>
+                    <li>Superfícies de controle secundárias (flapes, slats, spoilers)</li>
+                    <li>Sistemas de actução hidráulica e elétrica</li>
+                    <li>Sensores e transdutores de posição</li>
+                    <li>Sistemas fly-by-wire (controle por cabo elétrico)</li>
+                    <li>Computadores de controle de voo (FCC)</li>
+                </ul>
+            </div>
+
+            <div class="module">
+                <h2>Videoaula: Princípios de Funcionamento</h2>
+                <p>Assista a esta animação técnica para compreender os princípios fundamentais de operação dos sistemas de controle de voo em aeronaves comerciais.</p>
+                
+                <div class="video-container">
+                    <iframe id="youtubeVideo" src="https://www.youtube.com/embed/QYotT1MBCpU?si=zxbyj79dhGv41N7g" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i> Esta videoaula demonstra os princípios aerodinâmicos aplicados em sistemas de controle de voo, mostrando como pequenos movimentos das superfícies de controle geram forças significativas para manobrar a aeronave.
+                </div>
+            </div>
+
+            <div class="module">
+                <h2>Tipos de Sistemas de Controle de Voo</h2>
+                <p>Existem diferentes configurações de sistemas de controle de voo em aeronaves comerciais:</p>
+                
+                <h3>Sistema Mecânico Convencional</h3>
+                <p>Utilizado em aeronaves mais antigas, onde os comandos do piloto são transmitidos mecanicamente através de cabos, hastes e polias até as superfícies de controle.</p>
+                
+                <h3>Sistema Fly-by-Wire (FBW)</h3>
+                <p>Utilizado na maioria das aeronaves modernas, onde os comandos do piloto são convertidos em sinais elétricos e processados por computadores antes de acionarem os atuadores.</p>
+                
+                <div class="api-section">
+                    <h3>Dados Técnicos dos Sistemas</h3>
+                    <p>Características técnicas dos sistemas de controle de voo em diferentes modelos de aeronaves:</p>
+                    
+                    <div class="api-data">
+                        <div class="data-card">
+                            <i class="fas fa-tachometer-alt"></i>
+                            <h4>Tempo de Resposta</h4>
+                            <p>50-100 ms</p>
+                        </div>
+                        <div class="data-card">
+                            <i class="fas fa-microchip"></i>
+                            <h4>Redundância</h4>
+                            <p>3-4 canais</p>
+                        </div>
+                        <div class="data-card">
+                            <i class="fas fa-bolt"></i>
+                            <h4>Voltagem Operacional</h4>
+                            <p>28V DC / 115V AC</p>
+                        </div>
+                    </div>
+                    
+                    <p class="note">Dados baseados em manuais técnicos de aeronaves comerciais. Valores podem variar conforme modelo e fabricante.</p>
+                </div>
+            </div>
+
+            <div class="module">
+                <h2>Manutenção e Solução de Problemas</h2>
+                <p>Procedimentos essenciais para manutenção e diagnóstico de problemas em sistemas de controle de voo:</p>
+                
+                <h3>Checklist de Inspeção</h3>
+                <ul>
+                    <li>Verificação de folgas mecânicas</li>
+                    <li>Teste de funcionamento dos atuadores</li>
+                    <li>Calibração de sensores de posição</li>
+                    <li>Teste de sistemas de redundância</li>
+                    <li>Inspeção visual de superfícies de controle</li>
+                    <li>Verificação do sistema fly-by-wire</li>
+                </ul>
+                
+                <div class="quiz">
+                    <h3>Questionário: Sistema de Controle de Voo (ATA 27)</h3>
+                    <ol>
+                        <li>
+                            <p>Qual é a principal função do sistema de controle de voo em uma aeronave?</p>
+                            <input type="radio" name="q1" id="q1a"> <label for="q1a">Fornecer energia elétrica</label><br>
+                            <input type="radio" name="q1" id="q1b"> <label for="q1b">Controlar a atitude e trajetória da aeronave</label><br>
+                            <input type="radio" name="q1" id="q1c"> <label for="q1c">Gerenciar o combustível</label>
+                        </li>
+                        <li>
+                            <p>O que significa o termo "fly-by-wire" em sistemas de controle de voo?</p>
+                            <input type="radio" name="q2" id="q2a"> <label for="q2a">Controle por cabo elétrico</label><br>
+                            <input type="radio" name="q2" id="q2b"> <label for="q2b">Controle por cabos mecânicos</label><br>
+                            <input type="radio" name="q2" id="q2c"> <label for="q2c">Controle por sistema hidráulico puro</label>
+                        </li>
+                    </ol>
+                    
+                    <button class="btn">Enviar Respostas</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <h3>Sobre o Curso</h3>
+            
+            <div class="instructor">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" alt="Instrutor">
+                <div>
+                    <h4>Eng.</h4>
+                    <p>Especialista em Sistemas de Controle de Voo</p>
+                </div>
+            </div>
+            
+            <ul class="course-info">
+                <li><i class="far fa-clock"></i> Duração <span>6 semanas</span></li>
+                <li><i class="far fa-file-alt"></i> Módulos <span>8</span></li>
+                <li><i class="far fa-play-circle"></i> Videoaulas <span>14</span></li>
+                <li><i class="far fa-star"></i> Nível <span>Avançado</span></li>
+            </ul>
+            
+            <h4>Progresso do Curso</h4>
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+            <p>15% concluído</p>
+            
+            <a href="#" class="btn btn-block">Continuar Curso</a>
+            <a href="#" class="btn btn-block" style="background: var(--gray);">Material de Apoio</a>
+            
+            <h3 style="margin-top: 2rem;">Próximos Módulos</h3>
+            <ul>
+                <li>Princípios Aerodinâmicos</li>
+                <li>Sistemas Mecânicos</li>
+                <li>Fly-by-Wire</li>
+                <li>Atuadores e Sensores</li>
+                <li>Procedimentos de Emergência</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Asas do Conhecimento</h3>
+                <p>Plataforma de ensino especializada engenharia aeronáutica e normas das principais fabricantes do setor.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <a href="index1.html">Início</a>
+                <a href="index.html">Cursos</a>
+                <a href="area-kids.html">Área Kids</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p>Email: contato@asasdoconhecimento.com</p>
+                <p>Telefone: (11) 3456-7890</p>
+            </div>
+        </div>
+        
+        <div class="container copyright">
+            <p>&copy; 2025 Asas do Conhecimento. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simulação de dados de API
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simular carregamento de dados de API
+            setTimeout(() => {
+                console.log('Dados de sistemas de controle de voo carregados');
+            }, 1500);
+            
+            // Configurar player de vídeo
+            const video = document.getElementById('youtubeVideo');
+            video.addEventListener('load', () => {
+                console.log('Vídeo sobre sistemas de controle de voo carregado');
+            });
+        });
+    </script>
+</body>
+</html>

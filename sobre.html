@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - Asas do Conhecimento</title>
+  <link rel="icon" href="images/logoo.png" type="image/png">
+  <style>
+    /* Reset e variáveis de cores */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --azul: #0a3d62;
+      --laranja: #f39c12;
+      --branco: #ffffff;
+      --cinza: #f4f7fb;
+      --embraer: #00629B;
+      --boeing: #0033A0;
+      --airbus: #FF6600;
+      --mecanica: #4CAF50;
+      --eletrica: #FFC107;
+      --eletronica: #9C27B0;
+      --estrutura: #F44336;
+      --outras: #607D8B;
+      --dark: #2c3e50;
+      --accent: #FF5800;
+      --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transicao: all 0.3s ease;
+      --dark1:#2c3e50;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--cinza);
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* ======== CABEÇALHO ======== */
+    header {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+      color: var(--branco);
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--sombra);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-icon {
+      font-size: 2rem;
+      margin-right: 0.8rem;
+    }
+
+    .logo h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    /* ======== MENU ======== */
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+
+    .nav-links a {
+      color: var(--branco);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem;
+      border-radius: 4px;
+      transition: var(--transicao);
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* HAMBURGUER - OCULTO NO DESKTOP */
+    .burger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+    }
+
+    .burger div {
+      width: 100%;
+      height: 3px;
+      background-color: var(--branco);
+      border-radius: 3px;
+      transition: var(--transicao);
+    }
+
+    /* ======== CONTEÚDO ======== */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-title {
+      font-size: 28px;
+      color: var(--azul);
+      margin-bottom: 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--laranja);
+      margin: 10px auto;
+      border-radius: 2px;
+    }
+
+    /* ======== SOBRE ======== */
+    .about-content {
+      background: var(--branco);
+      border-radius: 10px;
+      padding: 2.5rem;
+      box-shadow: var(--sombra);
+      margin-bottom: 2rem;
+    }
+
+    .about-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .mission-vision {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+
+    .mission, .vision {
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--laranja);
+    }
+
+    .mission h3, .vision h3 {
+      color: var(--azul);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .mission h3 i, .vision h3 i {
+      margin-right: 10px;
+      color: var(--laranja);
+    }
+
+    .values {
+      margin: 2.5rem 0;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .value-card {
+      background: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 8px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      transition: var(--transicao);
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .value-card i {
+      font-size: 2.5rem;
+      color: var(--laranja);
+      margin-bottom: 1rem;
+    }
+
+    .value-card h4 {
+      color: var(--azul);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ======== RODAPÉ ======== */
+    footer {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .footer-section h3 {
+      color: var(--branco);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #555;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-section p, .footer-section a {
+      color: #ccc;
+      margin-bottom: 0.5rem;
+      display: block;
+      text-decoration: none;
+    }
+
+    .footer-section a:hover {
+      color: var(--accent);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #555;
+      color: #aaa;
+      font-size: 0.9rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 0;
+    }
+
+    /* ======== RESPONSIVIDADE ======== */
+    @media (max-width: 768px) {
+      /* Menu Hamburguer para mobile */
+      .burger {
+        display: flex;
+        z-index: 1000;
+      }
+      
+      .nav-links {
+        position: fixed;
+        right: 0;
+        height: 100vh;
+        top: 0;
+        background-color: var(--azul);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        z-index: 999;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      .nav-links li {
+        margin: 1.5rem 0;
+        opacity: 0;
+      }
+      
+      .nav-active {
+        transform: translateX(0%);
+      }
+      
+      /* Animações */
+      @keyframes navLinkFade {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+      
+      .toggle .line2 {
+        opacity: 0;
+      }
+      
+      .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+
+      /* Ajustes de layout para mobile */
+      .mission-vision, .values-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .about-content {
+        padding: 1.5rem;
+      }
+      
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Cabeçalho com Hambúrguer -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">✈</div>
+      <div>
+        <h1>Asas do Conhecimento</h1>
+      </div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index1.html">Início</a></li>
+        <li><a href="index.html">Cursos</a></li>
+        <li><a href="area-kids.html">Área Kids</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Conteúdo Sobre -->
+  <div class="container">
+    <h2 class="section-title">Sobre o Projeto</h2>
+    
+    <div class="about-content">
+      <p>O <strong>Asas do Conhecimento</strong> é uma plataforma de cursos especializada no setor aeronáutico, com foco nas grandes indústrias da área. Nosso objetivo principal é oferecer formação continuada para engenheiros, fornecendo conhecimento aprofundado sobre as principais normas utilizadas pelas empresas do setor, facilitando assim sua inserção e preparação para o mercado de trabalho.</p>
+      
+      <p>Nossa missão vai além da capacitação técnica - queremos ser a ponte que conecta talentos às oportunidades na indústria aeronáutica, um setor que exige padrões rigorosos de qualidade e segurança.</p>
+      
+      <div class="mission-vision">
+        <div class="mission">
+          <h3><i class="fas fa-bullseye"></i> Missão</h3>
+          <p>Capacitar profissionais e entusiastas da aviação através de educação especializada em normas e procedimentos aeronáuticos, contribuindo para a excelência e segurança no setor.</p>
+        </div>
+        
+        <div class="vision">
+          <h3><i class="fas fa-eye"></i> Visão</h3>
+          <p>Ser a principal referência em educação aeronáutica no Brasil, reconhecida pela qualidade do ensino e pela contribuição ao desenvolvimento do setor.</p>
+        </div>
+      </div>
+      
+      <p>Além dos cursos profissionais, o projeto também conta com uma <strong>Área Kids</strong>, criada especialmente para incentivar crianças e adolescentes a conhecerem mais sobre o universo da aviação. Através de projetos divertidos e educativos, despertamos o interesse por essa área fascinante, plantando as sementes para as futuras gerações de profissionais da aviação.</p>
+      
+      <p>O Asas do Conhecimento nasce com a missão de unir educação, inovação e inspiração, contribuindo para a formação de profissionais qualificados e para o futuro da aviação brasileira e mundial.</p>
+      
+      <div class="values">
+        <h3 class="section-title">Nossos Valores</h3>
+        
+        <div class="values-grid">
+          <div class="value-card">
+            <i class="fas fa-graduation-cap"></i>
+            <h4>Excelência no Ensino</h4>
+            <p>Compromisso com a qualidade e atualização constante do conteúdo.</p>
+          </div>
+          
+          <div class="value-card">
+            <i class="fas fa-users"></i>
+            <h4>Comunidade</h4>
+            <p>Fortalecimento da rede de profissionais do setor aeronáutico.</p>
+          </div>
+          
+          <div class="value-card">
+            <i class="fas fa-lightbulb"></i>
+            <h4>Inovação</h4>
+            <p>Busca contínua por novas metodologias e abordagens de ensino.</p>
+          </div>
+          
+          <div class="value-card">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Segurança</h4>
+            <p>Promoção dos mais altos padrões de segurança aeronáutica.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Asas do Conhecimento</h3>
+        <p>Plataforma de ensino especializada em engenharia aeronáutica e normas das principais fabricantes do setor.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Links Rápidos</h3>
+        <a href="index1.html">Início</a>
+        <a href="index.html">Cursos</a>
+        <a href="area-kids.html">Área Kids</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <p>Email: contato@asasdoconhecimento.com</p>
+        <p>Telefone: (11) 3456-7890</p>
+      </div>
+    </div>
+    
+    <div class="copyright">
+      <p>&copy; 2025 Asas do Conhecimento. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Menu mobile (hamburguer)
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    // Adicionar event listener para o botão hamburguer
+    if (burger && nav) {
+      burger.addEventListener('click', () => {
+        // Alternar a visibilidade do menu
+        nav.classList.toggle('nav-active');
+        
+        // Animar os links
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+        
+        // Animação do botão hamburguer
+        burger.classList.toggle('toggle');
+      });
+      
+      // Fechar menu ao clicar em um link
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (nav.classList.contains('nav-active')) {
+            nav.classList.remove('nav-active');
+            burger.classList.remove('toggle');
+            navLinks.forEach(link => {
+              link.style.animation = '';
+            });
+          }
+        });
+      });
+    }
+    
+    // Adicionar botão "Voltar ao topo"
+    const backToTopButton = document.createElement('button');
+    backToTopButton.innerHTML = '↑';
+    backToTopButton.setAttribute('aria-label', 'Voltar ao topo');
+    backToTopButton.style.position = 'fixed';
+    backToTopButton.style.bottom = '20px';
+    backToTopButton.style.right = '20px';
+    backToTopButton.style.width = '50px';
+    backToTopButton.style.height = '50px';
+    backToTopButton.style.borderRadius = '50%';
+    backToTopButton.style.backgroundColor = 'var(--azul)';
+    backToTopButton.style.color = 'white';
+    backToTopButton.style.border = 'none';
+    backToTopButton.style.cursor = 'pointer';
+    backToTopButton.style.fontSize = '24px';
+    backToTopButton.style.boxShadow = '0 2px 10px rgba(0,0,0,0.2)';
+    backToTopButton.style.display = 'none';
+    backToTopButton.style.zIndex = '1000';
+    backToTopButton.style.transition = 'opacity 0.3s, transform 0.3s';
+    
+    backToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    backToTopButton.addEventListener('mouseover', () => {
+      backToTopButton.style.transform = 'scale(1.1)';
+    });
+    
+    backToTopButton.addEventListener('mouseout', () => {
+      backToTopButton.style.transform = 'scale(1)';
+    });
+    
+    document.body.appendChild(backToTopButton);
+    
+    // Mostrar/ocultar o botão baseado na posição de rolagem
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.style.display = 'block';
+        setTimeout(() => {
+          backToTopButton.style.opacity = '1';
+        }, 10);
+      } else {
+        backToTopButton.style.opacity = '0';
+        setTimeout(() => {
+          if (window.scrollY <= 300) {
+            backToTopButton.style.display = 'none';
+          }
+        }, 300);
+      }
+    });
+    
+    // Adicionar ano atual no footer
+    const footerParagraph = document.querySelector('.copyright p');
+    if (footerParagraph) {
+      footerParagraph.innerHTML = `© ${new Date().getFullYear()} Asas do Conhecimento. Todos os direitos reservados.`;
+    }
+  </script>
+</body>
+</html>

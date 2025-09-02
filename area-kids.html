@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asas do Conhecimento - Área Kids</title>
+  <link rel="icon" href="images/logokids.png" type="image/png">
+  <style>
+    /* Reset e variáveis de cores */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    :root {
+      --azul: #0a3d62;
+      --laranja: #f39c12;
+      --laranja-claro: #fdebd0;
+      --branco: #ffffff;
+      --cinza: #f4f7fb;
+      --cinza-escuro: #e0e0e0;
+      --embraer: #00629B;
+      --boeing: #0033A0;
+      --airbus: #FF6600;
+      --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+      --transicao: all 0.3s ease;
+      --dark: #333;
+      --accent: #FF5800;
+
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--cinza);
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    /* Cabeçalho */
+    header {
+      background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+      color: var(--branco);
+      padding: 1rem 1.5rem;
+      box-shadow: var(--sombra);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-icon {
+      font-size: 2rem;
+      margin-right: 0.8rem;
+    }
+    
+    .logo h1 {
+      font-size: 1.5rem;
+      margin-bottom: 0;
+    }
+    
+    .subtitle {
+      display: none;
+    }
+    
+    /* Menu de navegação */
+    nav {
+      display: flex;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+    
+    .nav-links a {
+      color: var(--branco);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transicao);
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+    
+    .nav-links a:hover, .nav-links a.active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    .burger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+    }
+    
+    .burger div {
+      width: 100%;
+      height: 3px;
+      background-color: var(--branco);
+      border-radius: 5px;
+      transition: var(--transicao);
+    }
+    
+    /* Hero Section Kids */
+    .hero-kids {
+      background: url('images/kids.png');
+      background-size: cover;
+      background-position: center;
+      color: var(--branco);
+      text-align: center;
+      padding: 5rem 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .hero-kids h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero-kids p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      color: var(--azul);
+      margin-bottom: 1.5rem;
+      position: relative;
+      text-align: center;
+      padding-bottom: 0.5rem;
+    }
+    
+    .section-title-kids {
+      color: var(--laranja);
+    }
+    
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 4px;
+      background: var(--laranja);
+      margin: 0.5rem auto;
+      border-radius: 2px;
+    }
+    
+    /* Introdução */
+    .intro-text {
+      text-align: center;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+    }
+    
+    /* Grid de Projetos */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .project-card {
+      background: var(--branco);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: var(--transicao);
+      border-top: 5px solid var(--laranja);
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    
+    .project-icon {
+      text-align: center;
+      font-size: 3rem;
+      padding: 1.5rem;
+      background-color: var(--laranja-claro);
+    }
+    
+    .project-content {
+      padding: 1.5rem;
+    }
+    
+    .project-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--laranja);
+    }
+    
+    .project-description {
+      margin-bottom: 1.5rem;
+    }
+    
+    .project-link {
+      display: inline-block;
+      background-color: var(--laranja);
+      color: var(--branco);
+      padding: 0.7rem 1.5rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transicao);
+    }
+    
+    .project-link:hover {
+      background-color: var(--azul);
+      transform: translateY(-2px);
+    }
+    
+    /* Chamada para ação */
+    .cta-section {
+      background-color: var(--laranja-claro);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      margin: 3rem 0;
+      border-radius: 10px;
+    }
+    
+    .cta-title {
+      color: var(--laranja);
+      margin-bottom: 1rem;
+    }
+    
+    .cta-text {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+    }
+    
+    /* Rodapé */
+    footer {
+            background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--branco);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #555;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+    
+    /* Responsividade */
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        right: 0;
+        height: 100vh;
+        top: 0;
+        background-color: var(--azul);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        z-index: 999;
+        box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2);
+      }
+      
+      .nav-links li {
+        margin-left: 0;
+        opacity: 0;
+      }
+      
+      .burger {
+        display: flex;
+        z-index: 1000;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .hero-kids h2 {
+        font-size: 2rem;
+      }
+      
+      .hero-kids p {
+        font-size: 1rem;
+      }
+      
+      .nav-active {
+        transform: translateX(0%);
+      }
+      
+      @keyframes navLinkFade {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      
+      .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
+      }
+      
+      .toggle .line2 {
+        opacity: 0;
+      }
+      
+      .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="logo">
+      <div class="logo-icon">✈</div>
+      <div>
+        <h1>Asas do Conhecimento</h1>
+        <p class="subtitle">Plataforma Educacional de Normas Aeronáuticas</p>
+      </div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index1.html">Início</a></li>
+        <li><a href="index.html">Cursos</a></li>
+        <li><a href="area-kids.html" class="active">Área Kids</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Hero Section Kids -->
+  <section class="hero-kids">
+    <h2>                           </h2>
+    <p>                    </p>
+  </section>
+  
+  <!-- Introdução -->
+  <section class="container">
+    <h2 class="section-title section-title-kids">Bem-vindo à Área Kids!</h2>
+    <div class="intro-text">
+      <p>Nossa Área Kids foi criada especialmente para incentivar crianças e adolescentes a explorarem o fascinante mundo da aeronáutica! Aqui, unimos diversão e aprendizado através de projetos sustentáveis e criativos que despertam a curiosidade científica.</p>
+      <p>Acreditamos que os grandes engenheiros e cientistas do futuro começam suas jornadas com pequenas experiências hoje. Por isso, desenvolvemos atividades mão na massa que ensinam conceitos importantes de física, engenharia e sustentabilidade de forma lúdica e acessível.</p>
+    </div>
+  </section>
+  
+  <!-- Projetos -->
+  <section class="container">
+    <h2 class="section-title section-title-kids">Projetos Sustentáveis</h2>
+    <div class="projects-grid">
+      <!-- Projeto 1 -->
+      <div class="project-card">
+        <div class="project-icon">✈️</div>
+        <div class="project-content">
+          <h3 class="project-title">Avião de Papelão</h3>
+          <p class="project-description">Aprenda a construir seu próprio avião usando materiais recicláveis! Este projeto ensina noções básicas de aerodinâmica e sustentabilidade.</p>
+          <a href="pro1.html" class="project-link">Ver Projeto</a>
+        </div>
+      </div>
+      
+      <!-- Projeto 2 -->
+      <div class="project-card">
+        <div class="project-icon">🚀</div>
+        <div class="project-content">
+          <h3 class="project-title">Foguete de Garrafa PET</h3>
+          <p class="project-description">Construa um foguete funcional usando garrafas PET e descubra os princípios básicos da propulsão e da física de foguetes.</p>
+          <a href="pro2.html" class="project-link">Ver Projeto</a>
+        </div>
+      </div>
+      
+      <!-- Projeto 3 -->
+      <div class="project-card">
+        <div class="project-icon">🛩️</div>
+        <div class="project-content">
+          <h3 class="project-title">Mini Aeronaves</h3>
+          <p class="project-description">Desenvolva mini aeronaves com materiais simples e aprenda sobre aerofólio, sustentação e controle de voo de forma prática.</p>
+          <a href="pro3.html" class="project-link">Ver Projeto</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chamada para ação -->
+  <section class="container">
+    <div class="cta-section">
+      <h2 class="cta-title">Pronto para começar sua aventura aeroespacial?</h2>
+      <p class="cta-text">Escolha um projeto, reúna os materiais e embarque nesta jornada de descobertas! Todos os projetos foram desenvolvidos para serem seguros, educativos e super divertidos.</p>
+      <p>Não se esqueça de pedir ajuda de um adulto para cortar materiais e usar ferramentas!</p>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Asas do Conhecimento</h3>
+                <p>Plataforma de ensino especializada em engenharia aeronáutica e normas das principais fabricantes do setor.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <a href="index1.html">Início</a>
+                <a href="index.html">Cursos</a>
+                <a href="area-kids.html">Área Kids</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="contato.html">Contato</a>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fas fa-envelope"></i> contato@asasdoconhecimento.com</p>
+                <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+
+  <script>
+    // Menu mobile (hamburguer)
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('.nav-links');
+    const navLinks = document.querySelectorAll('.nav-links li');
+    
+    if (burger && nav && navLinks.length > 0) {
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('nav-active');
+        
+        navLinks.forEach((link, index) => {
+          if (link.style.animation) {
+            link.style.animation = '';
+          } else {
+            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+          }
+        });
+        
+        burger.classList.toggle('toggle');
+      });
+      
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          nav.classList.remove('nav-active');
+          burger.classList.remove('toggle');
+          navLinks.forEach(link => {
+            link.style.animation = '';
+          });
+        });
+      });
+    }
+
+    // Ano atual no footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
