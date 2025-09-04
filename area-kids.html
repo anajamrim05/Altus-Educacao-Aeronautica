@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asas do Conhecimento - Área Kids</title>
-  <link rel="icon" href="images/logokids.png" type="image/png">
+  <title>Altus Educação Aeronáutica - Projetos Sustentáveis</title>
+  <link rel="icon" href="images/logoo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     /* Reset e variáveis de cores */
     * {
@@ -27,7 +28,8 @@
       --transicao: all 0.3s ease;
       --dark: #333;
       --accent: #FF5800;
-
+      --verde: #27ae60;
+      --verde-claro: #d5f5e3;
     }
     
     body {
@@ -115,9 +117,9 @@
       transition: var(--transicao);
     }
     
-    /* Hero Section Kids */
-    .hero-kids {
-      background: url('images/kids.png');
+    /* Hero Section Sustentável */
+    .hero-sustentavel {
+      background: linear-gradient(rgba(10, 61, 98, 0.8), rgba(10, 61, 98, 0.8)), url('https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
       background-size: cover;
       background-position: center;
       color: var(--branco);
@@ -126,12 +128,12 @@
       margin-bottom: 3rem;
     }
     
-    .hero-kids h2 {
+    .hero-sustentavel h2 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
     }
     
-    .hero-kids p {
+    .hero-sustentavel p {
       font-size: 1.2rem;
       max-width: 800px;
       margin: 0 auto 2rem;
@@ -157,6 +159,10 @@
       color: var(--laranja);
     }
     
+    .section-title-sustentavel {
+      color: var(--verde);
+    }
+    
     .section-title::after {
       content: "";
       display: block;
@@ -165,6 +171,10 @@
       background: var(--laranja);
       margin: 0.5rem auto;
       border-radius: 2px;
+    }
+    
+    .section-title-sustentavel::after {
+      background: var(--verde);
     }
     
     /* Introdução */
@@ -193,6 +203,10 @@
       border-top: 5px solid var(--laranja);
     }
     
+    .project-card-sustentavel {
+      border-top: 5px solid var(--verde);
+    }
+    
     .project-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.12);
@@ -205,6 +219,10 @@
       background-color: var(--laranja-claro);
     }
     
+    .project-icon-sustentavel {
+      background-color: var(--verde-claro);
+    }
+    
     .project-content {
       padding: 1.5rem;
     }
@@ -213,6 +231,10 @@
       font-size: 1.3rem;
       margin-bottom: 0.5rem;
       color: var(--laranja);
+    }
+    
+    .project-title-sustentavel {
+      color: var(--verde);
     }
     
     .project-description {
@@ -228,6 +250,10 @@
       text-decoration: none;
       font-weight: 600;
       transition: var(--transicao);
+    }
+    
+    .project-link-sustentavel {
+      background-color: var(--verde);
     }
     
     .project-link:hover {
@@ -256,54 +282,57 @@
     
     /* Rodapé */
     footer {
-            background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
-            color: white;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
+      background: linear-gradient(135deg, var(--azul) 0%, var(--boeing) 50%, var(--embraer) 100%);
+      color: white;
+      padding: 2rem 0;
+      margin-top: 3rem;
+    }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
 
-        .footer-section h3 {
-            color: var(--branco);
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #555;
-            padding-bottom: 0.5rem;
-        }
+    .footer-section h3 {
+      color: var(--branco);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #555;
+      padding-bottom: 0.5rem;
+    }
 
-        .footer-section p, .footer-section a {
-            color: #ccc;
-            margin-bottom: 0.5rem;
-            display: block;
-            text-decoration: none;
-        }
+    .footer-section p, .footer-section a {
+      color: #ccc;
+      margin-bottom: 0.5rem;
+      display: block;
+      text-decoration: none;
+    }
 
-        .footer-section a:hover {
-            color: var(--accent);
-        }
+    .footer-section a:hover {
+      color: var(--accent);
+    }
 
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
 
-        .social-links a {
-            font-size: 1.5rem;
-        }
+    .social-links a {
+      font-size: 1.5rem;
+    }
 
-        .copyright {
-            text-align: center;
-            padding-top: 2rem;
-            margin-top: 2rem;
-            border-top: 1px solid #555;
-            color: #aaa;
-            font-size: 0.9rem;
-        }
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      margin-top: 2rem;
+      border-top: 1px solid #555;
+      color: #aaa;
+      font-size: 0.9rem;
+    }
     
     /* Responsividade */
     @media screen and (max-width: 768px) {
@@ -338,11 +367,11 @@
         grid-template-columns: 1fr;
       }
       
-      .hero-kids h2 {
+      .hero-sustentavel h2 {
         font-size: 2rem;
       }
       
-      .hero-kids p {
+      .hero-sustentavel p {
         font-size: 1rem;
       }
       
@@ -381,7 +410,7 @@
     <div class="logo">
       <div class="logo-icon">✈</div>
       <div>
-        <h1>Asas do Conhecimento</h1>
+        <h1>Altus Educação Aeronáutica</h1>
         <p class="subtitle">Plataforma Educacional de Normas Aeronáuticas</p>
       </div>
     </div>
@@ -389,7 +418,7 @@
       <ul class="nav-links">
         <li><a href="index1.html">Início</a></li>
         <li><a href="index.html">Cursos</a></li>
-        <li><a href="area-kids.html" class="active">Área Kids</a></li>
+        <li><a href="area-kids.html">Projetos</a></li>
         <li><a href="sobre.html">Sobre</a></li>
         <li><a href="contato.html">Contato</a></li>
       </ul>
@@ -401,24 +430,24 @@
     </nav>
   </header>
   
-  <!-- Hero Section Kids -->
-  <section class="hero-kids">
-    <h2>                           </h2>
-    <p>                    </p>
+  <!-- Hero Section Sustentável -->
+  <section class="hero-sustentavel">
+    <h2>Inovação e Sustentabilidade na Aviação</h2>
+    <p>Descubra projetos que unem tecnologia aeronáutica e responsabilidade ambiental para um futuro mais verde.</p>
   </section>
   
   <!-- Introdução -->
   <section class="container">
-    <h2 class="section-title section-title-kids">Bem-vindo à Área Kids!</h2>
+    <h2 class="section-title section-title-sustentavel">Sustentabilidade na Aviação</h2>
     <div class="intro-text">
-      <p>Nossa Área Kids foi criada especialmente para incentivar crianças e adolescentes a explorarem o fascinante mundo da aeronáutica! Aqui, unimos diversão e aprendizado através de projetos sustentáveis e criativos que despertam a curiosidade científica.</p>
-      <p>Acreditamos que os grandes engenheiros e cientistas do futuro começam suas jornadas com pequenas experiências hoje. Por isso, desenvolvemos atividades mão na massa que ensinam conceitos importantes de física, engenharia e sustentabilidade de forma lúdica e acessível.</p>
+      <p>Na Altus, acreditamos que o futuro da aviação depende da integração de práticas sustentáveis em todos os aspectos da indústria. Nossos projetos visam reduzir o impacto ambiental, promover a eficiência energética e inspirar as próximas gerações de profissionais da aviação a pensar verde.</p>
+      <p>Explore nossas iniciativas que vão desde projetos educacionais para crianças até soluções tecnológicas avançadas para a indústria aeronáutica.</p>
     </div>
   </section>
   
-  <!-- Projetos -->
+  <!-- Projetos Kids -->
   <section class="container">
-    <h2 class="section-title section-title-kids">Projetos Sustentáveis</h2>
+    <h2 class="section-title section-title-kids">Projetos Kids Sustentáveis</h2>
     <div class="projects-grid">
       <!-- Projeto 1 -->
       <div class="project-card">
@@ -452,44 +481,104 @@
     </div>
   </section>
 
+  <!-- Projetos Sustentáveis Normais -->
+  <section class="container">
+    <h2 class="section-title section-title-sustentavel">Projetos Sustentáveis</h2>
+    <div class="projects-grid">
+      <!-- Projeto 1 -->
+      <div class="project-card project-card-sustentavel">
+        <div class="project-icon project-icon-sustentavel">⛽</div>
+        <div class="project-content">
+          <h3 class="project-title project-title-sustentavel">Combustível Sustentável de Aviação (SAF)</h3>
+          <p class="project-description">Incentivar o uso de biocombustíveis produzidos a partir de fontes renováveis (óleo de cozinha usado, resíduos agrícolas, algas). Reduz até 80% das emissões de CO₂ em comparação ao querosene tradicional.</p>
+          <a href="saf.html" class="project-link project-link-sustentavel">Saber Mais</a>
+        </div>
+      </div>
+      
+      <!-- Projeto 2 -->
+      <div class="project-card project-card-sustentavel">
+        <div class="project-icon project-icon-sustentavel">♻️</div>
+        <div class="project-content">
+          <h3 class="project-title project-title-sustentavel">Reciclagem de Resíduos em Aeroportos</h3>
+          <p class="project-description">Separação e reciclagem de plásticos, metais e papéis gerados em áreas de embarque. Criação de estações inteligentes de coleta com sensores que mostram a quantidade reciclada.</p>
+          <a href="reciclagem.html" class="project-link project-link-sustentavel">Saber Mais</a>
+        </div>
+      </div>
+      
+      <!-- Projeto 3 -->
+      <div class="project-card project-card-sustentavel">
+        <div class="project-icon project-icon-sustentavel">🔋</div>
+        <div class="project-content">
+          <h3 class="project-title project-title-sustentavel">Aeronaves Elétricas para Treinamento</h3>
+          <p class="project-description">Uso de aviões leves elétricos em escolas de aviação para reduzir poluição e custos de combustível. Ideal para voos de instrução curtos.</p>
+          <a href="eletricas.html" class="project-link project-link-sustentavel">Saber Mais</a>
+        </div>
+      </div>
+      
+      <!-- Projeto 4 -->
+      <div class="project-card project-card-sustentavel">
+        <div class="project-icon project-icon-sustentavel">✈️</div>
+        <div class="project-content">
+          <h3 class="project-title project-title-sustentavel">Eficiência Aerodinâmica</h3>
+          <p class="project-description">Estudo e aplicação de winglets (extensões nas pontas das asas) em pequenas aeronaves para reduzir consumo de combustível. Além de sustentável, melhora a performance e reduz custos operacionais.</p>
+          <a href="aerodinamica.html" class="project-link project-link-sustentavel">Saber Mais</a>
+        </div>
+      </div>
+      
+      <!-- Projeto 5 -->
+      <div class="project-card project-card-sustentavel">
+        <div class="project-icon project-icon-sustentavel">📚</div>
+        <div class="project-content">
+          <h3 class="project-title project-title-sustentavel">Educação Verde para Estudantes de Aviação</h3>
+          <p class="project-description">Campanha online com dicas de práticas sustentáveis no setor aéreo: economia de energia em hangares e simuladores, reaproveitamento de água para lavagem de aeronaves e incentivo à pesquisa sobre materiais recicláveis em interiores de aviões.</p>
+          <a href="educacao-verde.html" class="project-link project-link-sustentavel">Saber Mais</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Chamada para ação -->
   <section class="container">
     <div class="cta-section">
-      <h2 class="cta-title">Pronto para começar sua aventura aeroespacial?</h2>
-      <p class="cta-text">Escolha um projeto, reúna os materiais e embarque nesta jornada de descobertas! Todos os projetos foram desenvolvidos para serem seguros, educativos e super divertidos.</p>
-      <p>Não se esqueça de pedir ajuda de um adulto para cortar materiais e usar ferramentas!</p>
+      <h2 class="cta-title">Participe dos Nossos Projetos Sustentáveis</h2>
+      <p class="cta-text">Junte-se a nós na missão de tornar a aviação mais sustentável. Seja implementando práticas verdes no seu dia a dia ou participando de nossos projetos de pesquisa e desenvolvimento.</p>
+      <p>Entre em contato para saber como você pode contribuir!</p>
     </div>
   </section>
 
   <!-- Rodapé -->
   <footer>
-        <div class="container footer-content">
-            <div class="footer-section">
-                <h3>Asas do Conhecimento</h3>
-                <p>Plataforma de ensino especializada em engenharia aeronáutica e normas das principais fabricantes do setor.</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Links Rápidos</h3>
-                <a href="index1.html">Início</a>
-                <a href="index.html">Cursos</a>
-                <a href="area-kids.html">Área Kids</a>
-                <a href="sobre.html">Sobre</a>
-                <a href="contato.html">Contato</a>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Contato</h3>
-                <p><i class="fas fa-envelope"></i> contato@asasdoconhecimento.com</p>
-                <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Altus Educação Aeronáutica</h3>
+        <p>Plataforma de ensino especializada em engenharia aeronáutica e normas das principais fabricantes do setor.</p>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Links Rápidos</h3>
+        <a href="index1.html">Início</a>
+        <a href="index.html">Cursos</a>
+        <a href="area-kids.html">Projetos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+      
+      <div class="footer-section">
+        <h3>Contato</h3>
+        <p><i class="fas fa-envelope"></i> contato@altuseducacaoaeronautica.com</p>
+        <p><i class="fas fa-phone"></i> (12) 3456-7890</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>&copy; 2025 Altus Educação Aeronáutica. Todos os direitos reservados.</p>
+    </div>
+  </footer>
 
   <script>
     // Menu mobile (hamburguer)
